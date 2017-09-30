@@ -1,3 +1,13 @@
+/* Question: find the numbers upto N which have 9 divisiors
+*Concept: the product of sqaures of 2 prime numbers have exact 9 divisors 
+*Input: N: the number limit upto which such 9 divisors number are to be generated 
+*Output: as desired
+*Constraint: 1<=n<=1000
+*Algorithm: use sieve of eranthoses and generate prime numbers
+            test p*p<=n  (p is prime)
+            generate p*p*q*q (q is a prime number greater than  p ALWAYS ) <=N
+            print the product of squares if condition satisfied
+*/
 #include<iostream.h>
 #include<conio.h>
 #define max 200
