@@ -6,6 +6,7 @@
 *Algorithm: use sieve of eranthoses and generate prime numbers
             test p*p<=n
             print the square if condition satisfied
+*TAGS: PRIME NUMBER, SIEVE , SEARCHING
 */
 #include<iostream.h>
 #include<conio.h>
