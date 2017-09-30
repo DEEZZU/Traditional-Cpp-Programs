@@ -1,5 +1,7 @@
-//SIEVE OF ERANTHOSES
-//generating prime numbers upto n
+/*SIEVE OF ERANTHOSES
+generating prime numbers upto n
+TAGS: PRIME NUMBERS, SIEVE
+*/
 #include<iostream.h>
 #include<conio.h>
 #define max 100
