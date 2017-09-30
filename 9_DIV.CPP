@@ -7,6 +7,7 @@
             test p*p<=n  (p is prime)
             generate p*p*q*q (q is a prime number greater than  p ALWAYS ) <=N
             print the product of squares if condition satisfied
+*TAGS: PRIME NUMBER, SIEVE , SEARCHING
 */
 #include<iostream.h>
 #include<conio.h>
