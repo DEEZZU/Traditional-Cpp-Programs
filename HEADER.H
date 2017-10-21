@@ -1,5 +1,7 @@
-#include<iostream.h>
-#include<conio.h>
-#include<string.h>
-#include<ctype.h>
+#include<iostream>
+#include<conio>
+#include<string>
+#include<ctype>
+#include<cstdlib>
+using namespace std;
 #define max 1024
