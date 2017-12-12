@@ -4,6 +4,9 @@
 // For example, for vector v containing { 1, 3, 5, 7 }, 
 // SortedSearch::countNumbers(v, 4) should return 2 because there are two vector elements less than 4.
 
+// Passed all test Cases 
+// Complexity : O(lg n)
+
 #include <vector>
 #include <stdexcept>
 #include <iostream>
