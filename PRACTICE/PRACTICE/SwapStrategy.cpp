@@ -72,7 +72,6 @@ int main()
     cout << "\n Number 2:";
     cin >> num2;
     
-    
     cout << "\n ORIGINAL NUMBER : " << num1 << " " << num2 ;
     // approach 1
     //using ref
