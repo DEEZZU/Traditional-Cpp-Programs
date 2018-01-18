@@ -37,6 +37,8 @@ void Merge::input()
         cin >> arr[i];
     }
     
+    mergeSort(0, size-1);
+    
 }
 
 void Merge::mergeSort(int f, int l)
@@ -72,14 +74,18 @@ void Merge::merge(int f, int m, int l)
     {
         left[i]=arr[k];
         k++;
+        cout << left[i] << " ";
     }
+    cout << endl ;
     
     k=m+1;
     for(i=0;i<n2;i++)
     {
         righ[i]=arr[k];
         k++;
+        cout << righ[i] << " " ;
     }
+    cout << endl ;
     
     k=0;
     i=0;
@@ -142,7 +148,7 @@ int main()
     
     Merge M;
     M.input();
-    M.mergeSort(0, 6);
+    
     M.display();
     return 0;
 }

@@ -5,6 +5,8 @@
 //  Created by DEEPTI SHARMA on 08/01/18.
 //  Copyright © 2018 DEEPTI SHARMA. All rights reserved.
 //
+// immediate primes of a number are added and the sum is generated
+// consider an example : if p = 3 is enetered then 2 and 5 surrounds 3 , therefore the sum = 2+5 = 7 is generated 
 
 #include <stdio.h>
 
