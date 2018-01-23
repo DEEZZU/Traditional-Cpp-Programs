@@ -48,7 +48,7 @@ void Merge::mergeSort(int f, int l)
     if(f<l)
     {
         m =(f+l)/2;
-        cout << "f" << f << " m" << m << " l" << l << endl;
+       // cout << "f" << f << " m" << m << " l" << l << endl;
         mergeSort(f, m);
         mergeSort(m+1, l);
         merge(f, m, l);

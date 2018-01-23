@@ -7,6 +7,8 @@
 //
 
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 #define maxSize 100
 
@@ -18,11 +20,14 @@ class Quick
     public :
     
     void input();
-    void qsort1( int , int );void qsort2( int , int );void qsort3( int , int );
-    int partition(int,int); //taking the last element for swap
-    int randomPartition(int, int); //taking the random element for swap
-    int firstPartition(int,int); //taking the first element for swap and partitioning]
-    void swap(int&, int&);
+    void qsort1( int , int );               // using last element as pivot
+    void qsort2( int , int );               // using first element as pivot
+    void qsort3( int , int );               // using middle element as pivot
+    void qsort4( int , int );               // using random element as pivot
+    int partition( int , int );             // taking the last element for swap
+    int randomPartition( int , int );       // taking the random element for swap
+    int firstPartition( int , int );        // taking the first element for swap
+    int middlePartition( int , int );       // taking the middle element for swap
     void display();
 };
 
@@ -42,9 +47,11 @@ void Quick::input()
     display();
     
     cout << " \n Sorting using the last element : " << endl ;
-    qsort1(0,size-1);
+    qsort3(0,size-1);
     
 }
+
+//*************************************************** LAST ELEMENT *****************************************************
 
 void Quick::qsort1(int f, int l)
 {
@@ -56,14 +63,13 @@ void Quick::qsort1(int f, int l)
      calling partition function on sub divisions and combining the results
     */
     
-    int pPoint=0;
+    int pPoint;
     
     if ( f<l )
     {
-        cout << f << " " << pPoint << " " << l << endl ;
+        
         pPoint=partition( f , l ) ;
-        cout << f << " " << pPoint << " " << l << endl ;
-        cout << endl ;
+
         qsort1( f , pPoint-1 ) ;
         qsort1( pPoint+1 , l );
     }
@@ -73,28 +79,201 @@ void Quick::qsort1(int f, int l)
 int Quick::partition(int fi, int la)
 {
     int p = arr[la];
-    cout << p << " " ;
-    cout << endl ;
+    int i = fi-1;
+    int j = fi ;
+    int temp;
     
-    while(fi<la)
+    while( j<la )
     {
-        if(p<arr[fi])
+        if ( arr[j]<= p )
         {
-            swap(arr[fi],arr[la]);
-            la--;
-            fi++;
+            i++;
+            temp=arr[i];
+            arr[i]=arr[j];
+            arr[j]=temp;
         }
-        else
-        {
-            fi++;
-        }
+        j++;
+    }
+
+    temp=arr[i+1];
+    arr[i+1]=arr[la];
+    arr[la]=temp;
+    
+    return (i+1);
+}
+
+//*************************************************** RANDOM ELEMENT *****************************************************
+
+void Quick::qsort2(int f, int l)
+{
+    /* Parameters :
+     f  :  first index in array
+     l  :  last index in array
+     
+     Function :
+     calling partition function on sub divisions and combining the results
+     */
+    
+    int pPoint;
+    
+    if ( f<l )
+    {
         
+        pPoint=randomPartition( f , l ) ;
+        
+        qsort1( f , pPoint-1 ) ;
+        qsort1( pPoint+1 , l );
     }
     
-    arr[fi]=p;
+}
+
+int Quick::randomPartition(int fi, int la)
+{
+    int temp;
+    int index = rand() % la + fi ;
     
-    display();
-    return (fi);
+    temp = arr[index] ;
+    arr[index] = arr[la];
+    arr[la] = temp;
+    
+    int p = arr[la];
+    int i = fi-1;
+    int j = fi ;
+    
+    
+    while( j<la )
+    {
+        if ( arr[j]<= p )
+        {
+            i++;
+            temp=arr[i];
+            arr[i]=arr[j];
+            arr[j]=temp;
+        }
+        j++;
+    }
+    
+    temp=arr[i+1];
+    arr[i+1]=arr[la];
+    arr[la]=temp;
+    
+    return (i+1);
+}
+
+//*************************************************** FIRST ELEMENT *****************************************************
+
+void Quick::qsort3(int f, int l)
+{
+    /* Parameters :
+     f  :  first index in array
+     l  :  last index in array
+     
+     Function :
+     calling partition function on sub divisions and combining the results
+     */
+    
+    int pPoint;
+    
+    if ( f<l )
+    {
+        
+        pPoint=firstPartition( f , l ) ;
+        
+        qsort1( f , pPoint-1 ) ;
+        qsort1( pPoint+1 , l );
+    }
+    
+}
+
+int Quick::firstPartition(int fi, int la)
+{
+    int temp;
+    int index = fi ;
+    
+    temp = arr[index] ;
+    arr[index] = arr[la];
+    arr[la] = temp;
+    
+    int p = arr[la];
+    int i = fi-1;
+    int j = fi ;
+    
+    
+    while( j<la )
+    {
+        if ( arr[j]<= p )
+        {
+            i++;
+            temp=arr[i];
+            arr[i]=arr[j];
+            arr[j]=temp;
+        }
+        j++;
+    }
+    
+    temp=arr[i+1];
+    arr[i+1]=arr[la];
+    arr[la]=temp;
+    
+    return (i+1);
+}
+
+//*************************************************** MEDIAN ELEMENT *****************************************************
+
+void Quick::qsort4(int f, int l)
+{
+    /* Parameters :
+     f  :  first index in array
+     l  :  last index in array
+     
+     Function :
+     calling partition function on sub divisions and combining the results
+     */
+    
+    int pPoint;
+    
+    if ( f<l )
+    {
+        
+        pPoint=partition( f , l ) ;
+        
+        qsort1( f , pPoint-1 ) ;
+        qsort1( pPoint+1 , l );
+    }
+    
+}
+
+int Quick::middlePartition(int fi, int la)
+{
+    int temp;
+    int index = (fi+la)/2 ;
+    
+    temp = arr[index] ;
+    arr[index] = arr[la];
+    arr[la] = temp;
+    
+    
+    int p = arr[la];
+    int i = fi-1;
+    int j = fi ;
+    
+    while( j<la )
+    {
+        if ( arr[j]<= p )
+        {
+            i++;
+            temp=arr[i];
+            arr[i]=arr[j];
+            arr[j]=temp;
+        }
+        j++;
+    }
+    
+    temp=arr[i+1];
+    arr[i+1]=arr[la];
+    arr[la]=temp;
+    
+    return (i+1);
 }
 
 void Quick::display()
@@ -107,12 +286,6 @@ void Quick::display()
     }
 }
 
-void Quick::swap(int& a, int& b)
-{
-    int temp =a;
-    a=b;
-    b=temp;
-}
 
 int main()
 {
