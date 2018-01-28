@@ -42,6 +42,7 @@ void CountingSort::input()
 void CountingSort::countSort()
 {
     int C[maxSize];
+    int output[maxSize];
     int max,min;
     max=min=arr[0];
     int i ;
@@ -71,20 +72,35 @@ void CountingSort::countSort()
         {
             C[arr[i]-min]++;
         }
-
-        int j=0;
-        
-        for( i=0 ; i<size ;)
+        for( i=1; i<size; i++ )
         {
-            if(C[j]!=0)
-            {
-                arr[i++]=j+min;
-                C[j]--;
-            }
-            else
-            {
-                j++;
-            }
+            C[i]=C[i]+C[i-1];
+        }
+        
+        cout << endl ;
+
+//        int j=0;
+        
+        for( i=0 ; i<size ;i++)
+        {
+//            if(C[j]!=0)
+//            {
+//                arr[i++]=j+min;
+//                C[j]--;
+//            }
+//            else
+//            {
+//                j++;
+            
+//            }
+            output[C[arr[i]-min]-1]=arr[i];
+            C[arr[i]-min]--;
+            
+        }
+        
+        for ( i=0; i<size ; i++ )
+        {
+            arr[i]=output[i];
         }
     }
     else
@@ -108,7 +124,7 @@ int main()
     
     C.input();
     C.display();
-    return 1;
+    return 0;
 }
 
 
